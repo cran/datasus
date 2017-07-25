@@ -12,7 +12,7 @@
 
 <meta name="author" content="Renato Prado Siqueira" />
 
-<meta name="date" content="2017-06-12" />
+<meta name="date" content="2017-07-24" />
 
 <title>Introduction to datasus</title>
 
@@ -70,7 +70,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 
 <h1 class="title toc-ignore">Introduction to datasus</h1>
 <h4 class="author"><em>Renato Prado Siqueira</em></h4>
-<h4 class="date"><em>2017-06-12</em></h4>
+<h4 class="date"><em>2017-07-24</em></h4>
 
 
 
@@ -86,10 +86,16 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </div>
 <div id="functions" class="section level2">
 <h2>Functions</h2>
-<p>For the time being, the “datasus” package contains six functions:</p>
+<p>The functions are named by parts:</p>
+<ul>
+<li>The 1st part is the data system (SIM or SINASC) where the data will be retrieved.</li>
+<li>The 2nd is the type of the data, i.e., the inferior level of the data system; when they are accompained by a number, it concerns with the ICD version.</li>
+<li>The 3rd is the geographic level of the data.</li>
+</ul>
+<p>Then, for example we have:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">sinasc_nv_uf       Scrapes SINASC data from the states unities
 
-sinasc_nv_mun      Scrapes SINASC data from cities
+sinasc_nv_mun      Scrapes SINASC data from municipalities
                    
 sinasc_nv_bruf     Scrapes SINASC data from regions
                    
@@ -111,7 +117,8 @@ sim_obt10_bruf     Scrapes SIM ICD<span class="dv">-10</span> data from regions<
 <span class="kw">sinasc_nv_uf</span>(<span class="dt">uf =</span> <span class="st">&quot;ms&quot;</span>,
              <span class="dt">period =</span> <span class="kw">c</span>(<span class="dv">2011</span>:<span class="dv">2015</span>),
              <span class="dt">coluna =</span> <span class="st">&quot;Ano do nascimento&quot;</span>)</code></pre></div>
-<pre><code>#&gt;                          Município  2011  2012  2013  2014  2015  Total
+<pre><code>#&gt; Warning: package 'bindrcpp' was built under R version 3.3.3
+#&gt;                          Município  2011  2012  2013  2014  2015  Total
 #&gt; 1                            TOTAL 42152 42252 42296 44058 44142 214900
 #&gt; 2                500020 Água Clara   283   263   278   247   253   1324
 #&gt; 3               500025 Alcinópolis    44    42    44    49    38    217

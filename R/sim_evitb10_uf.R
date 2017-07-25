@@ -1,19 +1,18 @@
-#' Scrapes SIM's ICD-10 data from UF's
+#' Scrapes SIM's ICD-10 evitable causes data from ufs
 #'
 #' This function allows the user to retrive data from
 #' SIM's ICD-10 database much in the same way that is done
 #' by the online portal. The argument options refer to
-#' data from the states unities.
+#' evitable causes in 5-74 age group data from the states
+#' unities.
 #'
-#' @usage sim_obt10_uf(uf, linha = "Município", coluna = "Não ativa",
+#' @usage sim_evitb10_uf(uf, linha = "Município", coluna = "Não ativa",
 #'   conteudo = 1, periodo = "last", municipio = "all", cir = "all",
 #'   macrorregiao_de_saude = "all", divisao_admnist_estadual = "all",
-#'   microrregiao_ibge = "all", ride = "all", capitulo_cid10 = "all",
-#'   grupo_cid10 = "all", categoria_cid10 = "all", causa_br_cid10 = "all",
-#'   causa_mal_definida = "all", faixa_etaria = "all", faixa_etaria_ops = "all",
-#'   faixa_etaria_det = "all", faixa_etaria_menor1a = "all", sexo = "all",
-#'   cor_raca = "all", escolaridade = "all", estado_civil = "all",
-#'   local_ocorrencia = "all")
+#'   microrregiao_ibge = "all", ride = "all", causas_evitaveis = "all",
+#'   capitulo_cid10 = "all", categoria_cid10 = "all", faixa_etaria = "all",
+#'   faixa_etaria_detalhada = "all", sexo = "all", cor_raca = "all",
+#'   escolaridade = "all", estado_civil = "all", local_ocorrencia = "all")
 #' @param uf A character of length = 1 with the state's acronym of interest.
 #' @param linha A character describing which element will be displayed in the rows of the data.frame. Defaults to "Município".
 #' @param coluna A character describing which element will be displayed in the columns of the data.frame. Defaults to "Não ativa".
@@ -25,15 +24,11 @@
 #' @param divisao_admnist_estadual "all" or a numeric vector with the State administrative division's codes to filter the data. Defaults to "all".
 #' @param microrregiao_ibge "all" or a numeric vector with the IBGE's micro-region codes to filter the data. Defaults to "all".
 #' @param ride "all" or a numeric vector with the IBGE's metropolitan-region codes to filter the data. Defaults to "all".
+#' @param causas_evitaveis "all" or a character vector with the evitable cause code (written in the same way) or the number corresponding to the order of the option in the online layout to filter the data. Defaults to "all".
 #' @param capitulo_cid10 "all" or a numeric vector with the ICD-10 chapter to filter the data. Defaults to "all".
-#' @param grupo_cid10 "all" or a character vector with the ICD-10 group (written in the same way) or the number corresponding to the order of the option in the online layout to filter the data. Defaults to "all".
 #' @param categoria_cid10 "all" or a character vector with the ICD-10 category codes (capital letter and two numbers) to filter the data. Defaults to "all".
-#' @param causa_br_cid10 "all" or a character vector with the ICD-10 cause codes to filter the data. Defaults to "all".
-#' @param causa_mal_definida "all" or a character vector with the ill-defined causes (written in the same way) or the number corresponding to the order of the option in the online layout to filter the data. Defaults to "all".
 #' @param faixa_etaria "all" or a character vector with the age range (written in the same way) or the number corresponding to the order of the option in the online layout to filter the data. Defaults to "all".
-#' @param faixa_etaria_ops "all" or a character vector with the age range (written in the same way) or the number corresponding to the order of the option in the online layout to filter the data. Defaults to "all". "ops" in the argument name stands for Pan American Health Organization.
-#' @param faixa_etaria_det "all" or a character vector with the age range (written in the same way) or the number corresponding to the order of the option in the online layout to filter the data. Defaults to "all".
-#' @param faixa_etaria_menor1a "all" or a character vector with the age range (written in the same way) or the number corresponding to the order of the option in the online layout to filter the data. Defaults to "all".
+#' @param faixa_etaria_detalhada "all" or a character vector with the age range (written in the same way) or the number corresponding to the order of the option in the online layout to filter the data. Defaults to "all".
 #' @param sexo "all" or a character vector with the gender (written in the same way) or the number corresponding to the order of the option in the online layout to filter the data. Defaults to "all".
 #' @param cor_raca "all" or a character vector with the color/race (written in the same way) or the number corresponding to the order of the option in the online layout to filter the data. Defaults to "all".
 #' @param escolaridade "all" or a character vector with the instruction (written in the same way) or the number corresponding to the order of the option in the online layout to filter the data. Defaults to "all".
@@ -41,27 +36,25 @@
 #' @param local_ocorrencia "all" or a character vector with the place of ocurrence to filter the data. Defaults to "all".
 #' @return The function returns a data frame printed by parameters input.
 #' @author Renato Prado Siqueira \email{<rpradosiqueira@@gmail.com>}
-#' @seealso \code{\link{sim_obt10_mun}}
+#' @seealso \code{\link{sim_evita10_uf}}
 #' @examples
 #' \dontrun{
 #' ## Requesting data from the state of Mato Grosso do Sul
-#' sim_obt10_uf(uf = "ms")
+#' sim_evitb10_uf(uf = "ms")
 #' }
 #'
-#' @keywords SIM datasus
+#' @keywords SIM datasus causas evitáveis
 #' @importFrom magrittr %>%
 #' @importFrom utils head
 #' @export
 
-sim_obt10_uf <- function(uf, linha = "Munic\u00edpio", coluna = "N\u00e3o ativa", conteudo = 1, periodo = "last", municipio = "all", cir = "all",
-                         macrorregiao_de_saude = "all", divisao_admnist_estadual = "all", microrregiao_ibge = "all", ride = "all",
-                         capitulo_cid10 = "all", grupo_cid10 = "all", categoria_cid10 = "all", causa_br_cid10 = "all",
-                         causa_mal_definida = "all", faixa_etaria = "all", faixa_etaria_ops = "all", faixa_etaria_det = "all",
-                         faixa_etaria_menor1a = "all", sexo = "all", cor_raca = "all", escolaridade = "all", estado_civil = "all",
-                         local_ocorrencia = "all") {
+sim_evitb10_uf <- function(uf, linha = "Munic\u00edpio", coluna = "N\u00e3o ativa", conteudo = 1, periodo = "last", municipio = "all", cir = "all",
+                           macrorregiao_de_saude = "all", divisao_admnist_estadual = "all", microrregiao_ibge = "all", ride = "all",
+                           causas_evitaveis = "all", capitulo_cid10 = "all", categoria_cid10 = "all", faixa_etaria = "all", faixa_etaria_detalhada = "all",
+                           sexo = "all", cor_raca = "all", escolaridade = "all", estado_civil = "all", local_ocorrencia = "all") {
 
 
-  page <- xml2::read_html(paste0("http://tabnet.datasus.gov.br/cgi/deftohtm.exe?sim/cnv/obt10",uf,".def"))
+  page <- xml2::read_html(paste0("http://tabnet.datasus.gov.br/cgi/deftohtm.exe?sim/cnv/evitb10",uf,".def"))
 
   #### DF ####
   linha.df <- data.frame(id = page %>% rvest::html_nodes("#L option") %>% rvest::html_text() %>% trimws(),
@@ -97,70 +90,53 @@ sim_obt10_uf <- function(uf, linha = "Munic\u00edpio", coluna = "N\u00e3o ativa"
   ride.df <- suppressWarnings(data.frame(id = page %>% rvest::html_nodes("#S6 option") %>% rvest::html_text() %>% readr::parse_number(),
                                          value = page %>% rvest::html_nodes("#S6 option") %>% rvest::html_attr("value")))
 
+  causas_evitaveis.df <- data.frame(id = page %>% rvest::html_nodes("#S7 option") %>% rvest::html_text() %>% trimws(),
+                                    value = page %>% rvest::html_nodes("#S7 option") %>% rvest::html_attr("value"))
+  causas_evitaveis.df[] <- lapply(causas_evitaveis.df, as.character)
+  causas_evitaveis.df$id <- gsub(" .*$", "", causas_evitaveis.df$id)
+  causas_evitaveis.df$id <- gsub("\\.", " ", causas_evitaveis.df$id) %>% trimws()
+  causas_evitaveis.df$id <- gsub(" ", ".", causas_evitaveis.df$id)
+
   capitulo_cid10.df <- data.frame(id = 0:22,
-                                  value = page %>% rvest::html_nodes("#S7 option") %>% rvest::html_attr("value"))
+                                    value = page %>% rvest::html_nodes("#S8 option") %>% rvest::html_attr("value"))
   capitulo_cid10.df[] <- lapply(capitulo_cid10.df, as.character)
 
-  grupo_cid10.df <- data.frame(id = page %>% rvest::html_nodes("#S8 option") %>% rvest::html_text() %>% trimws(),
-                               value = page %>% rvest::html_nodes("#S8 option") %>% rvest::html_attr("value"))
-  grupo_cid10.df[] <- lapply(grupo_cid10.df, as.character)
-
   categoria_cid10.df <- data.frame(id = page %>% rvest::html_nodes("#S9 option") %>% rvest::html_text() %>% trimws(),
-                                   value = page %>% rvest::html_nodes("#S9 option") %>% rvest::html_attr("value"))
+                                    value = page %>% rvest::html_nodes("#S9 option") %>% rvest::html_attr("value"))
   categoria_cid10.df[] <- lapply(categoria_cid10.df, as.character)
   categoria_cid10.df$id <- gsub(" .*$", "", categoria_cid10.df$id)
 
-  causa_br_cid10.df <- data.frame(id = page %>% rvest::html_nodes("#S10 option") %>% rvest::html_text() %>% trimws(),
-                                  value = page %>% rvest::html_nodes("#S10 option") %>% rvest::html_attr("value"))
-  causa_br_cid10.df[] <- lapply(causa_br_cid10.df, as.character)
-  causa_br_cid10.df.id_temp <- unlist(strsplit(causa_br_cid10.df$id, split = " "))
-  causa_br_cid10.df$id <- c(NA, causa_br_cid10.df.id_temp[stringr::str_detect(causa_br_cid10.df.id_temp, "\\d")])
-
-  causa_mal_definida.df <- data.frame(id = page %>% rvest::html_nodes("#S11 option") %>% rvest::html_text() %>% trimws(),
-                                      value = page %>% rvest::html_nodes("#S11 option") %>% rvest::html_attr("value"))
-  causa_mal_definida.df[] <- lapply(causa_mal_definida.df, as.character)
-
-  faixa_etaria.df <- data.frame(id = page %>% rvest::html_nodes("#S12 option") %>% rvest::html_text() %>% trimws(),
-                                value = page %>% rvest::html_nodes("#S12 option") %>% rvest::html_attr("value"))
+  faixa_etaria.df <- data.frame(id = page %>% rvest::html_nodes("#S10 option") %>% rvest::html_text() %>% trimws(),
+                                value = page %>% rvest::html_nodes("#S10 option") %>% rvest::html_attr("value"))
   faixa_etaria.df[] <- lapply(faixa_etaria.df, as.character)
 
-  faixa_etaria_ops.df <- data.frame(id = page %>% rvest::html_nodes("#S13 option") %>% rvest::html_text() %>% trimws(),
-                                    value = page %>% rvest::html_nodes("#S13 option") %>% rvest::html_attr("value"))
-  faixa_etaria_ops.df[] <- lapply(faixa_etaria_ops.df, as.character)
+  faixa_etaria_detalhada.df <- data.frame(id = page %>% rvest::html_nodes("#S11 option") %>% rvest::html_text() %>% trimws(),
+                                          value = page %>% rvest::html_nodes("#S11 option") %>% rvest::html_attr("value"))
+  faixa_etaria_detalhada.df[] <- lapply(faixa_etaria_detalhada.df, as.character)
 
-  faixa_etaria_det.df <- data.frame(id = page %>% rvest::html_nodes("#S14 option") %>% rvest::html_text() %>% trimws(),
-                                    value = page %>% rvest::html_nodes("#S14 option") %>% rvest::html_attr("value"))
-  faixa_etaria_det.df[] <- lapply(faixa_etaria_det.df, as.character)
-
-  faixa_etaria_menor1a.df <- data.frame(id = page %>% rvest::html_nodes("#S15 option") %>% rvest::html_text() %>% trimws(),
-                                        value = page %>% rvest::html_nodes("#S15 option") %>% rvest::html_attr("value"))
-  faixa_etaria_menor1a.df[] <- lapply(faixa_etaria_menor1a.df, as.character)
-
-  sexo.df <- data.frame(id = page %>% rvest::html_nodes("#S16 option") %>% rvest::html_text() %>% trimws(),
-                        value = page %>% rvest::html_nodes("#S16 option") %>% rvest::html_attr("value"))
+  sexo.df <- data.frame(id = page %>% rvest::html_nodes("#S12 option") %>% rvest::html_text() %>% trimws(),
+                        value = page %>% rvest::html_nodes("#S12 option") %>% rvest::html_attr("value"))
   sexo.df[] <- lapply(sexo.df, as.character)
 
-  cor_raca.df <- data.frame(id = page %>% rvest::html_nodes("#S17 option") %>% rvest::html_text() %>% trimws(),
-                            value = page %>% rvest::html_nodes("#S17 option") %>% rvest::html_attr("value"))
+  cor_raca.df <- data.frame(id = page %>% rvest::html_nodes("#S13 option") %>% rvest::html_text() %>% trimws(),
+                            value = page %>% rvest::html_nodes("#S13 option") %>% rvest::html_attr("value"))
   cor_raca.df[] <- lapply(cor_raca.df, as.character)
 
-  escolaridade.df <- data.frame(id = page %>% rvest::html_nodes("#S18 option") %>% rvest::html_text() %>% trimws(),
-                                value = page %>% rvest::html_nodes("#S18 option") %>% rvest::html_attr("value"))
+  escolaridade.df <- data.frame(id = page %>% rvest::html_nodes("#S14 option") %>% rvest::html_text() %>% trimws(),
+                                value = page %>% rvest::html_nodes("#S14 option") %>% rvest::html_attr("value"))
   escolaridade.df[] <- lapply(escolaridade.df, as.character)
 
-  estado_civil.df <- data.frame(id = page %>% rvest::html_nodes("#S19 option") %>% rvest::html_text() %>% trimws(),
-                                value = page %>% rvest::html_nodes("#S19 option") %>% rvest::html_attr("value"))
+  estado_civil.df <- data.frame(id = page %>% rvest::html_nodes("#S15 option") %>% rvest::html_text() %>% trimws(),
+                                value = page %>% rvest::html_nodes("#S15 option") %>% rvest::html_attr("value"))
   estado_civil.df[] <- lapply(estado_civil.df, as.character)
 
-  local_ocorrencia.df <- data.frame(id = page %>% rvest::html_nodes("#S20 option") %>% rvest::html_text() %>% trimws(),
-                                    value = page %>% rvest::html_nodes("#S20 option") %>% rvest::html_attr("value"))
+  local_ocorrencia.df <- data.frame(id = page %>% rvest::html_nodes("#S16 option") %>% rvest::html_text() %>% trimws(),
+                                    value = page %>% rvest::html_nodes("#S16 option") %>% rvest::html_attr("value"))
   local_ocorrencia.df[] <- lapply(local_ocorrencia.df, as.character)
 
   municipios.df$id[1] <- cir.df$id[1] <- macrorregiao_de_saude.df$id[1] <- divisao_admnist_estadual.df$id[1] <- microrregiao_ibge.df$id[1] <- "all"
-  ride.df$id[1] <- local_ocorrencia.df$id[1]<- capitulo_cid10.df$id[1] <- grupo_cid10.df$id[1] <- categoria_cid10.df$id[1] <- "all"
-  causa_br_cid10.df$id[1] <- causa_mal_definida.df$id[1] <- faixa_etaria.df$id[1] <- faixa_etaria_ops.df$id[1] <- "all"
-  faixa_etaria_det.df$id[1] <- faixa_etaria_menor1a.df$id[1] <- sexo.df$id[1] <- cor_raca.df$id[1] <- escolaridade.df$id[1] <- "all"
-  estado_civil.df$id[1] <- "all"
+  ride.df$id[1] <- local_ocorrencia.df$id[1]<- causas_evitaveis.df$id[1] <- capitulo_cid10.df$id[1] <- categoria_cid10.df$id[1] <- "all"
+  faixa_etaria.df$id[1] <- faixa_etaria_detalhada.df$id[1] <- sexo.df$id[1] <- cor_raca.df$id[1] <- escolaridade.df$id[1] <- estado_civil.df$id[1] <- "all"
 
   #### ERROR HANDLING ####
   if (linha != "Munic\u00edpio") {
@@ -275,6 +251,25 @@ sim_obt10_uf <- function(uf, linha = "Munic\u00edpio", coluna = "N\u00e3o ativa"
 
   }
 
+  if (any(causas_evitaveis != "all")) {
+
+    causas_evitaveis <- as.character(causas_evitaveis)
+
+    if (!(all(causas_evitaveis %in% causas_evitaveis.df$id))) {
+
+      causas_evitaveis <- as.character(causas_evitaveis)
+
+      if (!(all(causas_evitaveis %in% causas_evitaveis.df$value))) {
+
+        stop("Some element in 'causas_evitaveis' argument is wrong")
+
+      }
+
+    }
+
+  }
+
+
   if (any(capitulo_cid10 != "all")) {
 
     capitulo_cid10 <- as.character(capitulo_cid10)
@@ -283,51 +278,11 @@ sim_obt10_uf <- function(uf, linha = "Munic\u00edpio", coluna = "N\u00e3o ativa"
 
   }
 
-  if (any(grupo_cid10 != "all")) {
-
-    if (!(all(grupo_cid10 %in% grupo_cid10.df$id))) {
-
-      grupo_cid10 <- as.character(grupo_cid10)
-
-      if (!(all(grupo_cid10 %in% grupo_cid10.df$value))) {
-
-        stop("Some element in 'grupo_cid10' argument is wrong")
-
-      }
-
-    }
-
-  }
-
   if (any(categoria_cid10 != "all")) {
 
     categoria_cid10 <- as.character(categoria_cid10)
 
     if (!(all(categoria_cid10 %in% categoria_cid10.df$id))) stop("Some element in 'categoria_cid10' argument is wrong")
-
-  }
-
-  if (any(causa_br_cid10 != "all")) {
-
-    causa_br_cid10 <- as.character(causa_br_cid10)
-
-    if (!(all(causa_br_cid10 %in% causa_br_cid10.df$id))) stop("Some element in 'causa_br_cid10' argument is wrong")
-
-  }
-
-  if (any(causa_mal_definida != "all")) {
-
-    if (!(all(causa_mal_definida %in% causa_mal_definida.df$id))) {
-
-      causa_mal_definida <- as.character(causa_mal_definida)
-
-      if (!(all(causa_mal_definida %in% causa_mal_definida.df$value))) {
-
-        stop("Some element in 'causa_mal_definida' argument is wrong")
-
-      }
-
-    }
 
   }
 
@@ -347,31 +302,15 @@ sim_obt10_uf <- function(uf, linha = "Munic\u00edpio", coluna = "N\u00e3o ativa"
 
   }
 
-  if (any(faixa_etaria_ops != "all")) {
+  if (any(faixa_etaria_detalhada != "all")) {
 
-    if (!(all(faixa_etaria_ops %in% faixa_etaria_ops.df$id))) {
+    if (!(all(faixa_etaria_detalhada %in% faixa_etaria_detalhada.df$id))) {
 
-      faixa_etaria_ops <- as.character(faixa_etaria_ops)
+      faixa_etaria_detalhada <- as.character(faixa_etaria_detalhada)
 
-      if (!(all(faixa_etaria_ops %in% faixa_etaria_ops.df$value))) {
+      if (!(all(faixa_etaria_detalhada %in% faixa_etaria_detalhada.df$value))) {
 
-        stop("Some element in 'faixa_etaria_ops' argument is wrong")
-
-      }
-
-    }
-
-  }
-
-  if (any(faixa_etaria_det != "all")) {
-
-    if (!(all(faixa_etaria_det %in% faixa_etaria_det.df$id))) {
-
-      faixa_etaria_det <- as.character(faixa_etaria_det)
-
-      if (!(all(faixa_etaria_det %in% faixa_etaria_det.df$value))) {
-
-        stop("Some element in 'faixa_etaria_det' argument is wrong")
+        stop("Some element in 'faixa_etaria_detalhada' argument is wrong")
 
       }
 
@@ -379,21 +318,6 @@ sim_obt10_uf <- function(uf, linha = "Munic\u00edpio", coluna = "N\u00e3o ativa"
 
   }
 
-  if (any(faixa_etaria_menor1a != "all")) {
-
-    if (!(all(faixa_etaria_menor1a %in% faixa_etaria_menor1a.df$id))) {
-
-      faixa_etaria_menor1a <- as.character(faixa_etaria_menor1a)
-
-      if (!(all(faixa_etaria_menor1a %in% faixa_etaria_menor1a.df$value))) {
-
-        stop("Some element in 'faixa_etaria_menor1a' argument is wrong")
-
-      }
-
-    }
-
-  }
 
   if (any(sexo != "all")) {
 
@@ -545,17 +469,15 @@ sim_obt10_uf <- function(uf, linha = "Munic\u00edpio", coluna = "N\u00e3o ativa"
   form_ride <- dplyr::filter(ride.df, ride.df$id %in% ride)
   form_ride <- paste0("SRegi%E3o_Metropolitana_-_RIDE=", form_ride$value, collapse = "&")
 
-  form_pesqmes7 <- "pesqmes7=Digite+o+texto+e+ache+f%E1cil"
+  #causas_evitaveis
+  form_causas_evitaveis <- dplyr::filter(causas_evitaveis.df, causas_evitaveis.df$id %in% causas_evitaveis)
+  form_causas_evitaveis <- paste0("SCausas_evit%E1veis=", form_causas_evitaveis$value, collapse = "&")
+
+  form_pesqmes8 <- "pesqmes8=Digite+o+texto+e+ache+f%E1cil"
 
   #capitulo_cid10
   form_capitulo_cid10 <- dplyr::filter(capitulo_cid10.df, capitulo_cid10.df$id %in% capitulo_cid10)
   form_capitulo_cid10 <- paste0("SCap%EDtulo_CID-10=", form_capitulo_cid10$value, collapse = "&")
-
-  form_pesqmes8 <- "pesqmes8=Digite+o+texto+e+ache+f%E1cil"
-
-  #grupo_cid10
-  form_grupo_cid10 <- dplyr::filter(grupo_cid10.df, grupo_cid10.df$id %in% grupo_cid10)
-  form_grupo_cid10 <- paste0("SGrupo_CID-10=", form_grupo_cid10$value, collapse = "&")
 
   form_pesqmes9 <- "pesqmes9=Digite+o+texto+e+ache+f%E1cil"
 
@@ -563,37 +485,15 @@ sim_obt10_uf <- function(uf, linha = "Munic\u00edpio", coluna = "N\u00e3o ativa"
   form_categoria_cid10 <- dplyr::filter(categoria_cid10.df, categoria_cid10.df$id %in% categoria_cid10)
   form_categoria_cid10 <- paste0("SCategoria_CID-10=", form_categoria_cid10$value, collapse = "&")
 
-  form_pesqmes10 <- "pesqmes10=Digite+o+texto+e+ache+f%E1cil"
-
-  #causa_br_cid10
-  form_causa_br_cid10 <- dplyr::filter(causa_br_cid10.df, causa_br_cid10.df$id %in% causa_br_cid10)
-  form_causa_br_cid10 <- paste0("SCausa_-_CID-BR-10=", form_causa_br_cid10$value, collapse = "&")
-
-  #causa_mal_definida
-  form_causa_mal_definida <- dplyr::filter(causa_mal_definida.df, causa_mal_definida.df$id %in% causa_mal_definida)
-  form_causa_mal_definida <- paste0("SCausa_mal_definidas=", form_causa_mal_definida$value, collapse = "&")
-
-  form_pesqmes12 <- "pesqmes12=Digite+o+texto+e+ache+f%E1cil"
-
   #faixa_etaria
   form_faixa_etaria <- dplyr::filter(faixa_etaria.df, faixa_etaria.df$id %in% faixa_etaria)
   form_faixa_etaria <- paste0("SFaixa_Et%E1ria=", form_faixa_etaria$value, collapse = "&")
 
-  form_pesqmes13 <- "pesqmes13=Digite+o+texto+e+ache+f%E1cil"
+  form_pesqmes11 <- "pesqmes11=Digite+o+texto+e+ache+f%E1cil"
 
-  #faixa_etaria_ops
-  form_faixa_etaria_ops <- dplyr::filter(faixa_etaria_ops.df, faixa_etaria_ops.df$id %in% faixa_etaria_ops)
-  form_faixa_etaria_ops <- paste0("SFaixa_Et%E1ria_OPS=", form_faixa_etaria_ops$value, collapse = "&")
-
-  form_pesqmes14 <- "pesqmes14=Digite+o+texto+e+ache+f%E1cil"
-
-  #faixa_etaria_det
-  form_faixa_etaria_det <- dplyr::filter(faixa_etaria_det.df, faixa_etaria_det.df$id %in% faixa_etaria_det)
-  form_faixa_etaria_det <- paste0("SFaixa_Et%E1ria_det=", form_faixa_etaria_det$value, collapse = "&")
-
-  #faixa_etaria_menor1a
-  form_faixa_etaria_menor1a <- dplyr::filter(faixa_etaria_menor1a.df, faixa_etaria_menor1a.df$id %in% faixa_etaria_menor1a)
-  form_faixa_etaria_menor1a <- paste0("SFx.Et%E1ria_Menor_1A=", form_faixa_etaria_menor1a$value, collapse = "&")
+  #faixa_etaria_detalhada
+  form_faixa_etaria_detalhada <- dplyr::filter(faixa_etaria_detalhada.df, faixa_etaria_detalhada.df$id %in% faixa_etaria_detalhada)
+  form_faixa_etaria_detalhada <- paste0("SFaixa_Et%E1ria_detalhada=", form_faixa_etaria_detalhada$value, collapse = "&")
 
   #sexo
   form_sexo <- dplyr::filter(sexo.df, sexo.df$id %in% sexo)
@@ -614,16 +514,14 @@ sim_obt10_uf <- function(uf, linha = "Munic\u00edpio", coluna = "N\u00e3o ativa"
 
   form_data <- paste(form_linha, form_coluna, form_conteudo, form_periodo, form_pesqmes1, form_municipio, form_cir,
                      form_macrorregiao_de_saude, form_pesqmes4, form_divisao_admnist_estadual, form_pesqmes5,
-                     form_microrregiao_ibge, form_ride, form_pesqmes7, form_capitulo_cid10, form_pesqmes8,
-                     form_grupo_cid10, form_pesqmes9, form_categoria_cid10, form_pesqmes10, form_causa_br_cid10,
-                     form_causa_mal_definida, form_pesqmes12, form_faixa_etaria, form_pesqmes13, form_faixa_etaria_ops,
-                     form_pesqmes14, form_faixa_etaria_det, form_faixa_etaria_menor1a, form_sexo, form_cor_raca,
-                     form_estado_civil, form_local_ocorrencia, "formato=table&mostre=Mostra", sep = "&")
+                     form_microrregiao_ibge, form_ride, form_causas_evitaveis, form_pesqmes8, form_capitulo_cid10,
+                     form_pesqmes9, form_categoria_cid10, form_faixa_etaria, form_pesqmes11, form_faixa_etaria_detalhada,
+                     form_sexo, form_cor_raca, form_estado_civil, form_local_ocorrencia, "formato=table&mostre=Mostra", sep = "&")
 
   form_data <- gsub("\\\\u00", "%", form_data)
 
   ##### REQUEST FORM AND DATA WRANGLING ####
-  site <- httr::POST(url = paste0("http://tabnet.datasus.gov.br/cgi/tabcgi.exe?sim/cnv/obt10", uf,".def"),
+  site <- httr::POST(url = paste0("http://tabnet.datasus.gov.br/cgi/tabcgi.exe?sim/cnv/evitb10", uf,".def"),
                      body = form_data)
 
   tabdados <- httr::content(site, encoding = "Latin1") %>%
@@ -650,3 +548,4 @@ sim_obt10_uf <- function(uf, linha = "Munic\u00edpio", coluna = "N\u00e3o ativa"
   tabela_final
 
 }
+

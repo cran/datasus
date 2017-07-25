@@ -13,7 +13,7 @@ library(dplyr)
 ## ---- eval=FALSE---------------------------------------------------------
 #  sinasc_nv_uf       Scrapes SINASC data from the states unities
 #  
-#  sinasc_nv_mun      Scrapes SINASC data from cities
+#  sinasc_nv_mun      Scrapes SINASC data from municipalities
 #  
 #  sinasc_nv_bruf     Scrapes SINASC data from regions
 #  

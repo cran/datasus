@@ -1,7 +1,7 @@
 Package: datasus
 Type: Package
 Title: An Interface to DATASUS System
-Version: 0.1.0
+Version: 0.4.0
 Authors@R: person("Renato", "Prado Siqueira", email = "rpradosiqueira@gmail.com", role = c("aut", "cre"))
 Description: It allows the user to retrieve the data from the systems of 
     DATASUS (SUS IT department related to the Brazilian Ministry of Health, 
@@ -20,8 +20,8 @@ RoxygenNote: 6.0.1
 Suggests: knitr, rmarkdown
 VignetteBuilder: knitr
 NeedsCompilation: no
-Packaged: 2017-06-12 14:42:26 UTC; Renato
+Packaged: 2017-07-25 02:10:56 UTC; Renato
 Author: Renato Prado Siqueira [aut, cre]
 Maintainer: Renato Prado Siqueira <rpradosiqueira@gmail.com>
 Repository: CRAN
-Date/Publication: 2017-06-12 15:57:59 UTC
+Date/Publication: 2017-07-25 08:21:42 UTC
