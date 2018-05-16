@@ -1,3 +1,7 @@
+# datasus 0.4.1
+
+* Minor bug fix for maintanse release
+
 # datasus 0.4.0
 
 * 9 new functions related to he SIM's database.

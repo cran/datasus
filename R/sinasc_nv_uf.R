@@ -553,7 +553,7 @@ sinasc_nv_uf <- function(uf, linha = "Munic\u00edpio", coluna = "N\u00e3o ativa"
   }
 
   #periodo
-  suppressWarnings( if (periodo == "last") {periodo <- utils::head(periodos.df$id, 1)} )
+  suppressWarnings( if (any(periodo == "last")) {periodo <- utils::head(periodos.df$id, 1)} )
   form_periodo <- dplyr::filter(periodos.df, periodos.df$id %in% periodo)
   form_periodo <- paste0("Arquivos=", form_periodo$value, collapse = "&")
 

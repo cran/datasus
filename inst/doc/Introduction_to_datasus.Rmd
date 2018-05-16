@@ -69,7 +69,7 @@ sim_obt10_bruf     Scrapes SIM ICD-10 data from regions
 library(datasus)
 
 sinasc_nv_uf(uf = "ms",
-             period = c(2011:2015),
+             periodo = c(2011:2015),
              coluna = "Ano do nascimento")
 
 ```
@@ -79,7 +79,7 @@ sinasc_nv_uf(uf = "ms",
 library(datasus)
 
 sinasc_nv_uf(uf = "ms",
-             period = c(2011:2015),
+             periodo = c(2011:2015),
              coluna = "Ano do nascimento")
 
 ```

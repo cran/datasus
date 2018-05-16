@@ -28,7 +28,7 @@ library(dplyr)
 #  library(datasus)
 #  
 #  sinasc_nv_uf(uf = "ms",
-#               period = c(2011:2015),
+#               periodo = c(2011:2015),
 #               coluna = "Ano do nascimento")
 #  
 
@@ -37,7 +37,7 @@ library(dplyr)
 library(datasus)
 
 sinasc_nv_uf(uf = "ms",
-             period = c(2011:2015),
+             periodo = c(2011:2015),
              coluna = "Ano do nascimento")
 
 
