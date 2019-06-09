@@ -42,12 +42,12 @@ sinasc_nv_uf(uf = "ms",
 
 
 ## ---- eval = FALSE-------------------------------------------------------
-#  sim_obt10_mun(linha = "Microrregi„o IBGE",
-#                coluna = "CapÌtulo CID-10")
+#  sim_obt10_mun(linha = "Microrregi√£o IBGE",
+#                coluna = "Cap√≠tulo CID-10")
 #  
 
 ## ---- echo = FALSE-------------------------------------------------------
-head(sim_obt10_mun(linha = "Microrregi„o IBGE",
-                   coluna = "CapÌtulo CID-10"))
+head(sim_obt10_mun(linha = "Microrregi√£o IBGE",
+                   coluna = "Cap√≠tulo CID-10"))
 
 

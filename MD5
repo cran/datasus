@@ -1,4 +1,4 @@
-7031b07a49edeb864a59bc0f6985d2d8 *DESCRIPTION
+ef31d734f0f016901e29c7b5a52fc301 *DESCRIPTION
 a548a81a0f4f86ab3504822cd7050430 *NAMESPACE
 3f98ed927e6ebf974ab664cc19dcac56 *NEWS.md
 7cde65290cc4f8f7c0465e90996f8edf *R/sim_evita10_bruf.R
@@ -17,10 +17,10 @@ cc43ce8e5efa0ddfaae5d1fd5c05853f *R/sinasc_nv_bruf.R
 1eb210e7abd119f5ba7a96a2a9b17acb *R/sinasc_nv_mun.R
 aa6808a826bfe55139488dd3d2e3dce6 *R/sinasc_nv_uf.R
 618ff534296517637588daab10f4edff *README.md
-29106b74e249ac6b2033774a11293900 *build/vignette.rds
-3badb867985e894921a1e3c78ae66d2a *inst/doc/Introduction_to_datasus.R
+d7200a5545556bd1b16ebe9ba3a04b58 *build/vignette.rds
+6cb639f95f44a1a8d5f4bd4c973d2070 *inst/doc/Introduction_to_datasus.R
 4be9385b9dcdb7b4b2db63d24013c70c *inst/doc/Introduction_to_datasus.Rmd
-7658e22b5a36809e420eade676801340 *inst/doc/Introduction_to_datasus.html
+68ecfbf9ae38a52b46913415037059d2 *inst/doc/Introduction_to_datasus.html
 6e47da79a697baff0135b152a7ac763c *man/sim_evita10_bruf.Rd
 741de29cfd3add905d04bef837b6f8c7 *man/sim_evita10_mun.Rd
 7dbd9463e50bf36589871205a7d4c7c1 *man/sim_evita10_uf.Rd
