@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<meta name="author" content="Renato Prado Siqueira" />
+
+<meta name="date" content="2026-08-24" />
+
+<title>Geography and epidemiological analysis</title>
+
+<script>// Pandoc 2.9 adds attributes on both header and div. We remove the former (to
+// be compatible with the behavior of Pandoc < 2.8).
+document.addEventListener('DOMContentLoaded', function(e) {
+  var hs = document.querySelectorAll("div.section[class*='level'] > :first-child");
+  var i, h, a;
+  for (i = 0; i < hs.length; i++) {
+    h = hs[i];
+    if (!/^h[1-6]$/i.test(h.tagName)) continue;  // it should be a header h1-h6
+    a = h.attributes;
+    while (a.length > 0) h.removeAttribute(a[0].name);
+  }
+});
+</script>
+
+<style type="text/css">
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+span.underline{text-decoration: underline;}
+div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+</style>
+
+
+
+<style type="text/css">
+code {
+white-space: pre;
+}
+.sourceCode {
+overflow: visible;
+}
+</style>
+<style type="text/css" data-origin="pandoc">
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+{ counter-reset: source-line 0; }
+pre.numberSource code > span
+{ position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+{ content: counter(source-line);
+position: relative; left: -1em; text-align: right; vertical-align: baseline;
+border: none; display: inline-block;
+-webkit-touch-callout: none; -webkit-user-select: none;
+-khtml-user-select: none; -moz-user-select: none;
+-ms-user-select: none; user-select: none;
+padding: 0 4px; width: 4em;
+color: #aaaaaa;
+}
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa; padding-left: 4px; }
+div.sourceCode
+{ }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } 
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.at { color: #7d9029; } 
+code span.bn { color: #40a070; } 
+code span.bu { color: #008000; } 
+code span.cf { color: #007020; font-weight: bold; } 
+code span.ch { color: #4070a0; } 
+code span.cn { color: #880000; } 
+code span.co { color: #60a0b0; font-style: italic; } 
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.do { color: #ba2121; font-style: italic; } 
+code span.dt { color: #902000; } 
+code span.dv { color: #40a070; } 
+code span.er { color: #ff0000; font-weight: bold; } 
+code span.ex { } 
+code span.fl { color: #40a070; } 
+code span.fu { color: #06287e; } 
+code span.im { color: #008000; font-weight: bold; } 
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.kw { color: #007020; font-weight: bold; } 
+code span.op { color: #666666; } 
+code span.ot { color: #007020; } 
+code span.pp { color: #bc7a00; } 
+code span.sc { color: #4070a0; } 
+code span.ss { color: #bb6688; } 
+code span.st { color: #4070a0; } 
+code span.va { color: #19177c; } 
+code span.vs { color: #4070a0; } 
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } 
+</style>
+<script>
+// apply pandoc div.sourceCode style to pre.sourceCode instead
+(function() {
+  var sheets = document.styleSheets;
+  for (var i = 0; i < sheets.length; i++) {
+    if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
+    try { var rules = sheets[i].cssRules; } catch (e) { continue; }
+    var j = 0;
+    while (j < rules.length) {
+      var rule = rules[j];
+      // check if there is a div.sourceCode rule
+      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") {
+        j++;
+        continue;
+      }
+      var style = rule.style.cssText;
+      // check if color or background-color is set
+      if (rule.style.color === '' && rule.style.backgroundColor === '') {
+        j++;
+        continue;
+      }
+      // replace div.sourceCode by a pre.sourceCode rule
+      sheets[i].deleteRule(j);
+      sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
+    }
+  }
+})();
+</script>
+
+
+
+
+<style type="text/css">body {
+background-color: #fff;
+margin: 1em auto;
+max-width: 700px;
+overflow: visible;
+padding-left: 2em;
+padding-right: 2em;
+font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+font-size: 14px;
+line-height: 1.35;
+}
+#TOC {
+clear: both;
+margin: 0 0 10px 10px;
+padding: 4px;
+width: 400px;
+border: 1px solid #CCCCCC;
+border-radius: 5px;
+background-color: #f6f6f6;
+font-size: 13px;
+line-height: 1.3;
+}
+#TOC .toctitle {
+font-weight: bold;
+font-size: 15px;
+margin-left: 5px;
+}
+#TOC ul {
+padding-left: 40px;
+margin-left: -1.5em;
+margin-top: 5px;
+margin-bottom: 5px;
+}
+#TOC ul ul {
+margin-left: -2em;
+}
+#TOC li {
+line-height: 16px;
+}
+table {
+margin: 1em auto;
+border-width: 1px;
+border-color: #DDDDDD;
+border-style: outset;
+border-collapse: collapse;
+}
+table th {
+border-width: 2px;
+padding: 5px;
+border-style: inset;
+}
+table td {
+border-width: 1px;
+border-style: inset;
+line-height: 18px;
+padding: 5px 5px;
+}
+table, table th, table td {
+border-left-style: none;
+border-right-style: none;
+}
+table thead, table tr.even {
+background-color: #f7f7f7;
+}
+p {
+margin: 0.5em 0;
+}
+blockquote {
+background-color: #f6f6f6;
+padding: 0.25em 0.75em;
+}
+hr {
+border-style: solid;
+border: none;
+border-top: 1px solid #777;
+margin: 28px 0;
+}
+dl {
+margin-left: 0;
+}
+dl dd {
+margin-bottom: 13px;
+margin-left: 13px;
+}
+dl dt {
+font-weight: bold;
+}
+ul {
+margin-top: 0;
+}
+ul li {
+list-style: circle outside;
+}
+ul ul {
+margin-bottom: 0;
+}
+pre, code {
+background-color: #f7f7f7;
+border-radius: 3px;
+color: #333;
+white-space: pre-wrap; 
+}
+pre {
+border-radius: 3px;
+margin: 5px 0px 10px 0px;
+padding: 10px;
+}
+pre:not([class]) {
+background-color: #f7f7f7;
+}
+code {
+font-family: Consolas, Monaco, 'Courier New', monospace;
+font-size: 85%;
+}
+p > code, li > code {
+padding: 2px 0px;
+}
+div.figure {
+text-align: center;
+}
+img {
+background-color: #FFFFFF;
+padding: 2px;
+border: 1px solid #DDDDDD;
+border-radius: 3px;
+border: 1px solid #CCCCCC;
+margin: 0 5px;
+}
+h1 {
+margin-top: 0;
+font-size: 35px;
+line-height: 40px;
+}
+h2 {
+border-bottom: 4px solid #f7f7f7;
+padding-top: 10px;
+padding-bottom: 2px;
+font-size: 145%;
+}
+h3 {
+border-bottom: 2px solid #f7f7f7;
+padding-top: 10px;
+font-size: 120%;
+}
+h4 {
+border-bottom: 1px solid #f7f7f7;
+margin-left: 8px;
+font-size: 105%;
+}
+h5, h6 {
+border-bottom: 1px solid #ccc;
+font-size: 105%;
+}
+a {
+color: #0033dd;
+text-decoration: none;
+}
+a:hover {
+color: #6666ff; }
+a:visited {
+color: #800080; }
+a:visited:hover {
+color: #BB00BB; }
+a[href^="http:"] {
+text-decoration: underline; }
+a[href^="https:"] {
+text-decoration: underline; }
+
+code > span.kw { color: #555; font-weight: bold; } 
+code > span.dt { color: #902000; } 
+code > span.dv { color: #40a070; } 
+code > span.bn { color: #d14; } 
+code > span.fl { color: #d14; } 
+code > span.ch { color: #d14; } 
+code > span.st { color: #d14; } 
+code > span.co { color: #888888; font-style: italic; } 
+code > span.ot { color: #007020; } 
+code > span.al { color: #ff0000; font-weight: bold; } 
+code > span.fu { color: #900; font-weight: bold; } 
+code > span.er { color: #a61717; background-color: #e3d2d2; } 
+</style>
+
+
+
+
+</head>
+
+<body>
+
+
+
+
+<h1 class="title toc-ignore">Geography and epidemiological analysis</h1>
+<h4 class="author">Renato Prado Siqueira</h4>
+<h4 class="date">2026-08-24</h4>
+
+
+
+<div id="overview" class="section level2">
+<h2>Overview</h2>
+<p>The package includes an offline IBGE territorial reference and
+dependency-free helpers for common epidemiological calculations. These
+tools can be used with data retrieved through <code>datasus</code> or
+with any data frame that uses compatible identifiers.</p>
+</div>
+<div id="territorial-reference" class="section level2">
+<h2>Territorial reference</h2>
+<p>Inspect the current hierarchy at region, state or municipality
+level:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="fu">datasus_territorios</span>(<span class="st">&quot;regiao&quot;</span>)</span>
+<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a><span class="co">#&gt;   codigo_regiao sigla_regiao       regiao ufs municipios</span></span>
+<span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a><span class="co">#&gt; 1             1            N        Norte   7        450</span></span>
+<span id="cb1-4"><a href="#cb1-4" tabindex="-1"></a><span class="co">#&gt; 2             2           NE     Nordeste   9       1794</span></span>
+<span id="cb1-5"><a href="#cb1-5" tabindex="-1"></a><span class="co">#&gt; 3             3           SE      Sudeste   4       1668</span></span>
+<span id="cb1-6"><a href="#cb1-6" tabindex="-1"></a><span class="co">#&gt; 4             4            S          Sul   3       1191</span></span>
+<span id="cb1-7"><a href="#cb1-7" tabindex="-1"></a><span class="co">#&gt; 5             5           CO Centro-Oeste   4        468</span></span>
+<span id="cb1-8"><a href="#cb1-8" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">datasus_territorios</span>(<span class="st">&quot;uf&quot;</span>))</span>
+<span id="cb1-9"><a href="#cb1-9" tabindex="-1"></a><span class="co">#&gt;   codigo_uf uf unidade_federacao codigo_regiao sigla_regiao regiao municipios</span></span>
+<span id="cb1-10"><a href="#cb1-10" tabindex="-1"></a><span class="co">#&gt; 1        11 RO   Rond&lt;U+00F4&gt;nia             1            N  Norte         52</span></span>
+<span id="cb1-11"><a href="#cb1-11" tabindex="-1"></a><span class="co">#&gt; 2        12 AC              Acre             1            N  Norte         22</span></span>
+<span id="cb1-12"><a href="#cb1-12" tabindex="-1"></a><span class="co">#&gt; 3        13 AM          Amazonas             1            N  Norte         62</span></span>
+<span id="cb1-13"><a href="#cb1-13" tabindex="-1"></a><span class="co">#&gt; 4        14 RR           Roraima             1            N  Norte         15</span></span>
+<span id="cb1-14"><a href="#cb1-14" tabindex="-1"></a><span class="co">#&gt; 5        15 PA       Par&lt;U+00E1&gt;             1            N  Norte        144</span></span>
+<span id="cb1-15"><a href="#cb1-15" tabindex="-1"></a><span class="co">#&gt; 6        16 AP      Amap&lt;U+00E1&gt;             1            N  Norte         16</span></span>
+<span id="cb1-16"><a href="#cb1-16" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">datasus_territorios</span>(<span class="st">&quot;municipio&quot;</span>, <span class="at">uf =</span> <span class="st">&quot;MS&quot;</span>))</span>
+<span id="cb1-17"><a href="#cb1-17" tabindex="-1"></a><span class="co">#&gt;   codigo_municipio           municipio codigo_uf uf  unidade_federacao</span></span>
+<span id="cb1-18"><a href="#cb1-18" tabindex="-1"></a><span class="co">#&gt; 1          5000203   &lt;U+00C1&gt;gua Clara        50 MS Mato Grosso do Sul</span></span>
+<span id="cb1-19"><a href="#cb1-19" tabindex="-1"></a><span class="co">#&gt; 2          5000252  Alcin&lt;U+00F3&gt;polis        50 MS Mato Grosso do Sul</span></span>
+<span id="cb1-20"><a href="#cb1-20" tabindex="-1"></a><span class="co">#&gt; 3          5000609             Amambai        50 MS Mato Grosso do Sul</span></span>
+<span id="cb1-21"><a href="#cb1-21" tabindex="-1"></a><span class="co">#&gt; 4          5000708    Anast&lt;U+00E1&gt;cio        50 MS Mato Grosso do Sul</span></span>
+<span id="cb1-22"><a href="#cb1-22" tabindex="-1"></a><span class="co">#&gt; 5          5000807 Anauril&lt;U+00E2&gt;ndia        50 MS Mato Grosso do Sul</span></span>
+<span id="cb1-23"><a href="#cb1-23" tabindex="-1"></a><span class="co">#&gt; 6          5000856     Ang&lt;U+00E9&gt;lica        50 MS Mato Grosso do Sul</span></span>
+<span id="cb1-24"><a href="#cb1-24" tabindex="-1"></a><span class="co">#&gt;   codigo_regiao sigla_regiao       regiao codigo_regiao_imediata</span></span>
+<span id="cb1-25"><a href="#cb1-25" tabindex="-1"></a><span class="co">#&gt; 1             5           CO Centro-Oeste                 500002</span></span>
+<span id="cb1-26"><a href="#cb1-26" tabindex="-1"></a><span class="co">#&gt; 2             5           CO Centro-Oeste                 500004</span></span>
+<span id="cb1-27"><a href="#cb1-27" tabindex="-1"></a><span class="co">#&gt; 3             5           CO Centro-Oeste                 500009</span></span>
+<span id="cb1-28"><a href="#cb1-28" tabindex="-1"></a><span class="co">#&gt; 4             5           CO Centro-Oeste                 500012</span></span>
+<span id="cb1-29"><a href="#cb1-29" tabindex="-1"></a><span class="co">#&gt; 5             5           CO Centro-Oeste                 500007</span></span>
+<span id="cb1-30"><a href="#cb1-30" tabindex="-1"></a><span class="co">#&gt; 6             5           CO Centro-Oeste                 500007</span></span>
+<span id="cb1-31"><a href="#cb1-31" tabindex="-1"></a><span class="co">#&gt;                 regiao_imediata codigo_regiao_intermediaria</span></span>
+<span id="cb1-32"><a href="#cb1-32" tabindex="-1"></a><span class="co">#&gt; 1            Tr&lt;U+00EA&gt;s Lagoas                        5001</span></span>
+<span id="cb1-33"><a href="#cb1-33" tabindex="-1"></a><span class="co">#&gt; 2                         Coxim                        5001</span></span>
+<span id="cb1-34"><a href="#cb1-34" tabindex="-1"></a><span class="co">#&gt; 3                       Amambai                        5002</span></span>
+<span id="cb1-35"><a href="#cb1-35" tabindex="-1"></a><span class="co">#&gt; 4 Aquidauana - Anast&lt;U+00E1&gt;cio                        5003</span></span>
+<span id="cb1-36"><a href="#cb1-36" tabindex="-1"></a><span class="co">#&gt; 5                Nova Andradina                        5002</span></span>
+<span id="cb1-37"><a href="#cb1-37" tabindex="-1"></a><span class="co">#&gt; 6                Nova Andradina                        5002</span></span>
+<span id="cb1-38"><a href="#cb1-38" tabindex="-1"></a><span class="co">#&gt;   regiao_intermediaria codigo_microrregiao       microrregiao</span></span>
+<span id="cb1-39"><a href="#cb1-39" tabindex="-1"></a><span class="co">#&gt; 1         Campo Grande               50007 Tr&lt;U+00EA&gt;s Lagoas</span></span>
+<span id="cb1-40"><a href="#cb1-40" tabindex="-1"></a><span class="co">#&gt; 2         Campo Grande               50003       Alto Taquari</span></span>
+<span id="cb1-41"><a href="#cb1-41" tabindex="-1"></a><span class="co">#&gt; 3             Dourados               50010           Dourados</span></span>
+<span id="cb1-42"><a href="#cb1-42" tabindex="-1"></a><span class="co">#&gt; 4       Corumb&lt;U+00E1&gt;               50002         Aquidauana</span></span>
+<span id="cb1-43"><a href="#cb1-43" tabindex="-1"></a><span class="co">#&gt; 5             Dourados               50008     Nova Andradina</span></span>
+<span id="cb1-44"><a href="#cb1-44" tabindex="-1"></a><span class="co">#&gt; 6             Dourados               50011           Iguatemi</span></span>
+<span id="cb1-45"><a href="#cb1-45" tabindex="-1"></a><span class="co">#&gt;   codigo_mesorregiao                        mesorregiao</span></span>
+<span id="cb1-46"><a href="#cb1-46" tabindex="-1"></a><span class="co">#&gt; 1               5003        Leste de Mato Grosso do Sul</span></span>
+<span id="cb1-47"><a href="#cb1-47" tabindex="-1"></a><span class="co">#&gt; 2               5002 Centro Norte de Mato Grosso do Sul</span></span>
+<span id="cb1-48"><a href="#cb1-48" tabindex="-1"></a><span class="co">#&gt; 3               5004     Sudoeste de Mato Grosso do Sul</span></span>
+<span id="cb1-49"><a href="#cb1-49" tabindex="-1"></a><span class="co">#&gt; 4               5001       Pantanais Sul Mato-grossense</span></span>
+<span id="cb1-50"><a href="#cb1-50" tabindex="-1"></a><span class="co">#&gt; 5               5003        Leste de Mato Grosso do Sul</span></span>
+<span id="cb1-51"><a href="#cb1-51" tabindex="-1"></a><span class="co">#&gt; 6               5004     Sudoeste de Mato Grosso do Sul</span></span></code></pre></div>
+<p>DATASUS commonly uses six-digit municipality codes, while IBGE
+publishes a seven-digit identifier. Normalize either form
+explicitly:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a><span class="fu">normalizar_codigo_ibge</span>(</span>
+<span id="cb2-2"><a href="#cb2-2" tabindex="-1"></a>  <span class="fu">c</span>(<span class="st">&quot;500270&quot;</span>, <span class="st">&quot;500370&quot;</span>),</span>
+<span id="cb2-3"><a href="#cb2-3" tabindex="-1"></a>  <span class="at">nivel =</span> <span class="st">&quot;municipio&quot;</span>,</span>
+<span id="cb2-4"><a href="#cb2-4" tabindex="-1"></a>  <span class="at">formato =</span> <span class="st">&quot;ibge&quot;</span></span>
+<span id="cb2-5"><a href="#cb2-5" tabindex="-1"></a>)</span>
+<span id="cb2-6"><a href="#cb2-6" tabindex="-1"></a><span class="co">#&gt; [1] &quot;5002704&quot; &quot;5003702&quot;</span></span></code></pre></div>
+<p><code>validar_codigo_ibge()</code> reports whether identifiers belong
+to the current reference:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a><span class="fu">validar_codigo_ibge</span>(<span class="fu">c</span>(<span class="st">&quot;5002704&quot;</span>, <span class="st">&quot;5003702&quot;</span>, <span class="st">&quot;9999999&quot;</span>))</span>
+<span id="cb3-2"><a href="#cb3-2" tabindex="-1"></a><span class="co">#&gt; [1]  TRUE  TRUE FALSE</span></span></code></pre></div>
+</div>
+<div id="add-geography-to-observations" class="section level2">
+<h2>Add geography to observations</h2>
+<p>Use <code>adicionar_territorio()</code> to attach municipality, state
+and region information without changing row order:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a>events <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb4-2"><a href="#cb4-2" tabindex="-1"></a>  <span class="at">codigo =</span> <span class="fu">c</span>(<span class="st">&quot;500270&quot;</span>, <span class="st">&quot;500370&quot;</span>),</span>
+<span id="cb4-3"><a href="#cb4-3" tabindex="-1"></a>  <span class="at">ano =</span> <span class="fu">c</span>(<span class="dv">2025</span><span class="dt">L</span>, <span class="dv">2025</span><span class="dt">L</span>),</span>
+<span id="cb4-4"><a href="#cb4-4" tabindex="-1"></a>  <span class="at">casos =</span> <span class="fu">c</span>(<span class="dv">18</span><span class="dt">L</span>, <span class="dv">7</span><span class="dt">L</span>)</span>
+<span id="cb4-5"><a href="#cb4-5" tabindex="-1"></a>)</span>
+<span id="cb4-6"><a href="#cb4-6" tabindex="-1"></a></span>
+<span id="cb4-7"><a href="#cb4-7" tabindex="-1"></a>events <span class="ot">&lt;-</span> <span class="fu">adicionar_territorio</span>(events, <span class="at">codigo =</span> <span class="st">&quot;codigo&quot;</span>)</span>
+<span id="cb4-8"><a href="#cb4-8" tabindex="-1"></a>events</span>
+<span id="cb4-9"><a href="#cb4-9" tabindex="-1"></a><span class="co">#&gt;   codigo  ano casos codigo_municipio    municipio codigo_uf uf</span></span>
+<span id="cb4-10"><a href="#cb4-10" tabindex="-1"></a><span class="co">#&gt; 1 500270 2025    18          5002704 Campo Grande        50 MS</span></span>
+<span id="cb4-11"><a href="#cb4-11" tabindex="-1"></a><span class="co">#&gt; 2 500370 2025     7          5003702     Dourados        50 MS</span></span>
+<span id="cb4-12"><a href="#cb4-12" tabindex="-1"></a><span class="co">#&gt;    unidade_federacao codigo_regiao sigla_regiao       regiao</span></span>
+<span id="cb4-13"><a href="#cb4-13" tabindex="-1"></a><span class="co">#&gt; 1 Mato Grosso do Sul             5           CO Centro-Oeste</span></span>
+<span id="cb4-14"><a href="#cb4-14" tabindex="-1"></a><span class="co">#&gt; 2 Mato Grosso do Sul             5           CO Centro-Oeste</span></span>
+<span id="cb4-15"><a href="#cb4-15" tabindex="-1"></a><span class="co">#&gt;   codigo_regiao_imediata regiao_imediata codigo_regiao_intermediaria</span></span>
+<span id="cb4-16"><a href="#cb4-16" tabindex="-1"></a><span class="co">#&gt; 1                 500001    Campo Grande                        5001</span></span>
+<span id="cb4-17"><a href="#cb4-17" tabindex="-1"></a><span class="co">#&gt; 2                 500005        Dourados                        5002</span></span>
+<span id="cb4-18"><a href="#cb4-18" tabindex="-1"></a><span class="co">#&gt;   regiao_intermediaria codigo_microrregiao microrregiao codigo_mesorregiao</span></span>
+<span id="cb4-19"><a href="#cb4-19" tabindex="-1"></a><span class="co">#&gt; 1         Campo Grande               50004 Campo Grande               5002</span></span>
+<span id="cb4-20"><a href="#cb4-20" tabindex="-1"></a><span class="co">#&gt; 2             Dourados               50010     Dourados               5004</span></span>
+<span id="cb4-21"><a href="#cb4-21" tabindex="-1"></a><span class="co">#&gt;                          mesorregiao</span></span>
+<span id="cb4-22"><a href="#cb4-22" tabindex="-1"></a><span class="co">#&gt; 1 Centro Norte de Mato Grosso do Sul</span></span>
+<span id="cb4-23"><a href="#cb4-23" tabindex="-1"></a><span class="co">#&gt; 2     Sudoeste de Mato Grosso do Sul</span></span></code></pre></div>
+<p>The bundled hierarchy describes current territorial units. Historical
+observations are not automatically redistributed after boundary
+changes.</p>
+</div>
+<div id="make-missing-combinations-explicit" class="section level2">
+<h2>Make missing combinations explicit</h2>
+<p>Absent municipality-period combinations can be created before
+calculating rates or plotting a panel:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a>panel <span class="ot">&lt;-</span> <span class="fu">completar_territorios</span>(</span>
+<span id="cb5-2"><a href="#cb5-2" tabindex="-1"></a>  events,</span>
+<span id="cb5-3"><a href="#cb5-3" tabindex="-1"></a>  <span class="at">codigo =</span> <span class="st">&quot;codigo&quot;</span>,</span>
+<span id="cb5-4"><a href="#cb5-4" tabindex="-1"></a>  <span class="at">periodo =</span> <span class="st">&quot;ano&quot;</span>,</span>
+<span id="cb5-5"><a href="#cb5-5" tabindex="-1"></a>  <span class="at">uf =</span> <span class="st">&quot;MS&quot;</span>,</span>
+<span id="cb5-6"><a href="#cb5-6" tabindex="-1"></a>  <span class="at">periodos =</span> <span class="dv">2023</span><span class="sc">:</span><span class="dv">2025</span>,</span>
+<span id="cb5-7"><a href="#cb5-7" tabindex="-1"></a>  <span class="at">preencher =</span> <span class="fu">list</span>(<span class="at">casos =</span> <span class="dv">0</span>)</span>
+<span id="cb5-8"><a href="#cb5-8" tabindex="-1"></a>)</span></code></pre></div>
+<p>Choose the territorial universe and periods explicitly. An absent
+record is not always equivalent to a true zero.</p>
+</div>
+<div id="join-population-denominators" class="section level2">
+<h2>Join population denominators</h2>
+<p><code>juntar_populacao()</code> requires unique population keys,
+preserves observation order and reports unmatched rows by default:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a>cases <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb6-2"><a href="#cb6-2" tabindex="-1"></a>  <span class="at">codigo_municipio =</span> <span class="fu">c</span>(<span class="st">&quot;5002704&quot;</span>, <span class="st">&quot;5003702&quot;</span>),</span>
+<span id="cb6-3"><a href="#cb6-3" tabindex="-1"></a>  <span class="at">ano =</span> <span class="fu">c</span>(<span class="dv">2025</span><span class="dt">L</span>, <span class="dv">2025</span><span class="dt">L</span>),</span>
+<span id="cb6-4"><a href="#cb6-4" tabindex="-1"></a>  <span class="at">casos =</span> <span class="fu">c</span>(<span class="dv">18</span><span class="dt">L</span>, <span class="dv">7</span><span class="dt">L</span>)</span>
+<span id="cb6-5"><a href="#cb6-5" tabindex="-1"></a>)</span>
+<span id="cb6-6"><a href="#cb6-6" tabindex="-1"></a>population <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb6-7"><a href="#cb6-7" tabindex="-1"></a>  <span class="at">codigo_municipio =</span> <span class="fu">c</span>(<span class="st">&quot;5002704&quot;</span>, <span class="st">&quot;5003702&quot;</span>),</span>
+<span id="cb6-8"><a href="#cb6-8" tabindex="-1"></a>  <span class="at">ano =</span> <span class="fu">c</span>(<span class="dv">2025</span><span class="dt">L</span>, <span class="dv">2025</span><span class="dt">L</span>),</span>
+<span id="cb6-9"><a href="#cb6-9" tabindex="-1"></a>  <span class="at">habitantes =</span> <span class="fu">c</span>(<span class="dv">925000</span>, <span class="dv">95000</span>)</span>
+<span id="cb6-10"><a href="#cb6-10" tabindex="-1"></a>)</span>
+<span id="cb6-11"><a href="#cb6-11" tabindex="-1"></a></span>
+<span id="cb6-12"><a href="#cb6-12" tabindex="-1"></a>analysis <span class="ot">&lt;-</span> <span class="fu">juntar_populacao</span>(</span>
+<span id="cb6-13"><a href="#cb6-13" tabindex="-1"></a>  cases,</span>
+<span id="cb6-14"><a href="#cb6-14" tabindex="-1"></a>  population,</span>
+<span id="cb6-15"><a href="#cb6-15" tabindex="-1"></a>  <span class="at">por =</span> <span class="fu">c</span>(</span>
+<span id="cb6-16"><a href="#cb6-16" tabindex="-1"></a>    <span class="at">codigo_municipio =</span> <span class="st">&quot;codigo_municipio&quot;</span>,</span>
+<span id="cb6-17"><a href="#cb6-17" tabindex="-1"></a>    <span class="at">ano =</span> <span class="st">&quot;ano&quot;</span></span>
+<span id="cb6-18"><a href="#cb6-18" tabindex="-1"></a>  ),</span>
+<span id="cb6-19"><a href="#cb6-19" tabindex="-1"></a>  <span class="at">coluna_populacao =</span> <span class="st">&quot;habitantes&quot;</span>,</span>
+<span id="cb6-20"><a href="#cb6-20" tabindex="-1"></a>  <span class="at">nome =</span> <span class="st">&quot;habitantes&quot;</span></span>
+<span id="cb6-21"><a href="#cb6-21" tabindex="-1"></a>)</span>
+<span id="cb6-22"><a href="#cb6-22" tabindex="-1"></a>analysis</span>
+<span id="cb6-23"><a href="#cb6-23" tabindex="-1"></a><span class="co">#&gt;   codigo_municipio  ano casos habitantes</span></span>
+<span id="cb6-24"><a href="#cb6-24" tabindex="-1"></a><span class="co">#&gt; 1          5002704 2025    18     925000</span></span>
+<span id="cb6-25"><a href="#cb6-25" tabindex="-1"></a><span class="co">#&gt; 2          5003702 2025     7      95000</span></span></code></pre></div>
+</div>
+<div id="rates-proportions-and-case-fatality" class="section level2">
+<h2>Rates, proportions and case fatality</h2>
+<p>Vector helpers are useful for direct calculations:</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a><span class="fu">calcular_taxa</span>(</span>
+<span id="cb7-2"><a href="#cb7-2" tabindex="-1"></a>  <span class="at">eventos =</span> <span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">25</span>),</span>
+<span id="cb7-3"><a href="#cb7-3" tabindex="-1"></a>  <span class="at">populacao =</span> <span class="fu">c</span>(<span class="dv">10000</span>, <span class="dv">20000</span>)</span>
+<span id="cb7-4"><a href="#cb7-4" tabindex="-1"></a>)</span>
+<span id="cb7-5"><a href="#cb7-5" tabindex="-1"></a><span class="co">#&gt; [1] 100 125</span></span>
+<span id="cb7-6"><a href="#cb7-6" tabindex="-1"></a><span class="co">#&gt; attr(,&quot;multiplicador&quot;)</span></span>
+<span id="cb7-7"><a href="#cb7-7" tabindex="-1"></a><span class="co">#&gt; [1] 1e+05</span></span>
+<span id="cb7-8"><a href="#cb7-8" tabindex="-1"></a></span>
+<span id="cb7-9"><a href="#cb7-9" tabindex="-1"></a><span class="fu">intervalo_taxa</span>(</span>
+<span id="cb7-10"><a href="#cb7-10" tabindex="-1"></a>  <span class="at">eventos =</span> <span class="dv">10</span>,</span>
+<span id="cb7-11"><a href="#cb7-11" tabindex="-1"></a>  <span class="at">populacao =</span> <span class="dv">10000</span>,</span>
+<span id="cb7-12"><a href="#cb7-12" tabindex="-1"></a>  <span class="at">confianca =</span> <span class="fl">0.95</span></span>
+<span id="cb7-13"><a href="#cb7-13" tabindex="-1"></a>)</span>
+<span id="cb7-14"><a href="#cb7-14" tabindex="-1"></a><span class="co">#&gt;   eventos populacao taxa limite_inferior limite_superior</span></span>
+<span id="cb7-15"><a href="#cb7-15" tabindex="-1"></a><span class="co">#&gt; 1      10     10000  100        47.95389        183.9036</span></span></code></pre></div>
+<p>The grouped indicator engine aggregates counts before calculating the
+estimate. This is preferable to averaging rates calculated for
+individual rows:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a><span class="fu">taxa_incidencia</span>(</span>
+<span id="cb8-2"><a href="#cb8-2" tabindex="-1"></a>  analysis,</span>
+<span id="cb8-3"><a href="#cb8-3" tabindex="-1"></a>  <span class="at">casos =</span> <span class="st">&quot;casos&quot;</span>,</span>
+<span id="cb8-4"><a href="#cb8-4" tabindex="-1"></a>  <span class="at">populacao =</span> <span class="st">&quot;habitantes&quot;</span>,</span>
+<span id="cb8-5"><a href="#cb8-5" tabindex="-1"></a>  <span class="at">grupo =</span> <span class="st">&quot;ano&quot;</span>,</span>
+<span id="cb8-6"><a href="#cb8-6" tabindex="-1"></a>  <span class="at">confianca =</span> <span class="fl">0.95</span></span>
+<span id="cb8-7"><a href="#cb8-7" tabindex="-1"></a>)</span>
+<span id="cb8-8"><a href="#cb8-8" tabindex="-1"></a><span class="co">#&gt;    ano numerador denominador taxa_incidencia limite_inferior limite_superior</span></span>
+<span id="cb8-9"><a href="#cb8-9" tabindex="-1"></a><span class="co">#&gt; 1 2025        25     1020000         2.45098        1.586145        3.618131</span></span>
+<span id="cb8-10"><a href="#cb8-10" tabindex="-1"></a></span>
+<span id="cb8-11"><a href="#cb8-11" tabindex="-1"></a>outcomes <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb8-12"><a href="#cb8-12" tabindex="-1"></a>  <span class="at">ano =</span> <span class="fu">c</span>(<span class="dv">2024</span><span class="dt">L</span>, <span class="dv">2024</span><span class="dt">L</span>, <span class="dv">2025</span><span class="dt">L</span>, <span class="dv">2025</span><span class="dt">L</span>),</span>
+<span id="cb8-13"><a href="#cb8-13" tabindex="-1"></a>  <span class="at">casos =</span> <span class="fu">c</span>(<span class="dv">50</span>, <span class="dv">30</span>, <span class="dv">45</span>, <span class="dv">35</span>),</span>
+<span id="cb8-14"><a href="#cb8-14" tabindex="-1"></a>  <span class="at">obitos =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">2</span>)</span>
+<span id="cb8-15"><a href="#cb8-15" tabindex="-1"></a>)</span>
+<span id="cb8-16"><a href="#cb8-16" tabindex="-1"></a><span class="fu">letalidade</span>(</span>
+<span id="cb8-17"><a href="#cb8-17" tabindex="-1"></a>  outcomes,</span>
+<span id="cb8-18"><a href="#cb8-18" tabindex="-1"></a>  <span class="at">obitos =</span> <span class="st">&quot;obitos&quot;</span>,</span>
+<span id="cb8-19"><a href="#cb8-19" tabindex="-1"></a>  <span class="at">casos =</span> <span class="st">&quot;casos&quot;</span>,</span>
+<span id="cb8-20"><a href="#cb8-20" tabindex="-1"></a>  <span class="at">grupo =</span> <span class="st">&quot;ano&quot;</span>,</span>
+<span id="cb8-21"><a href="#cb8-21" tabindex="-1"></a>  <span class="at">confianca =</span> <span class="fl">0.95</span></span>
+<span id="cb8-22"><a href="#cb8-22" tabindex="-1"></a>)</span>
+<span id="cb8-23"><a href="#cb8-23" tabindex="-1"></a><span class="co">#&gt;    ano numerador denominador letalidade limite_inferior limite_superior</span></span>
+<span id="cb8-24"><a href="#cb8-24" tabindex="-1"></a><span class="co">#&gt; 1 2024         3          80       3.75       0.7801187         10.5702</span></span>
+<span id="cb8-25"><a href="#cb8-25" tabindex="-1"></a><span class="co">#&gt; 2 2025         3          80       3.75       0.7801187         10.5702</span></span></code></pre></div>
+<p><code>proporcao()</code> and <code>taxa_mortalidade()</code> use the
+same grouped interface.</p>
+</div>
+<div id="epidemiological-calendar-and-moving-averages" class="section level2">
+<h2>Epidemiological calendar and moving averages</h2>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" tabindex="-1"></a><span class="fu">semana_epidemiologica</span>(</span>
+<span id="cb9-2"><a href="#cb9-2" tabindex="-1"></a>  <span class="fu">as.Date</span>(<span class="fu">c</span>(<span class="st">&quot;2025-01-01&quot;</span>, <span class="st">&quot;2025-12-31&quot;</span>, <span class="st">&quot;2026-01-01&quot;</span>))</span>
+<span id="cb9-3"><a href="#cb9-3" tabindex="-1"></a>)</span>
+<span id="cb9-4"><a href="#cb9-4" tabindex="-1"></a><span class="co">#&gt;         data ano_epidemiologico semana_epidemiologica     inicio        fim</span></span>
+<span id="cb9-5"><a href="#cb9-5" tabindex="-1"></a><span class="co">#&gt; 1 2025-01-01               2025                     1 2024-12-29 2025-01-04</span></span>
+<span id="cb9-6"><a href="#cb9-6" tabindex="-1"></a><span class="co">#&gt; 2 2025-12-31               2025                    53 2025-12-28 2026-01-03</span></span>
+<span id="cb9-7"><a href="#cb9-7" tabindex="-1"></a><span class="co">#&gt; 3 2026-01-01               2025                    53 2025-12-28 2026-01-03</span></span>
+<span id="cb9-8"><a href="#cb9-8" tabindex="-1"></a><span class="co">#&gt;     codigo</span></span>
+<span id="cb9-9"><a href="#cb9-9" tabindex="-1"></a><span class="co">#&gt; 1 2025-W01</span></span>
+<span id="cb9-10"><a href="#cb9-10" tabindex="-1"></a><span class="co">#&gt; 2 2025-W53</span></span>
+<span id="cb9-11"><a href="#cb9-11" tabindex="-1"></a><span class="co">#&gt; 3 2025-W53</span></span>
+<span id="cb9-12"><a href="#cb9-12" tabindex="-1"></a></span>
+<span id="cb9-13"><a href="#cb9-13" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">calendario_epidemiologico</span>(<span class="dv">2026</span>))</span>
+<span id="cb9-14"><a href="#cb9-14" tabindex="-1"></a><span class="co">#&gt;   ano_epidemiologico semana_epidemiologica     inicio        fim   codigo</span></span>
+<span id="cb9-15"><a href="#cb9-15" tabindex="-1"></a><span class="co">#&gt; 1               2026                     1 2026-01-04 2026-01-10 2026-W01</span></span>
+<span id="cb9-16"><a href="#cb9-16" tabindex="-1"></a><span class="co">#&gt; 2               2026                     2 2026-01-11 2026-01-17 2026-W02</span></span>
+<span id="cb9-17"><a href="#cb9-17" tabindex="-1"></a><span class="co">#&gt; 3               2026                     3 2026-01-18 2026-01-24 2026-W03</span></span>
+<span id="cb9-18"><a href="#cb9-18" tabindex="-1"></a><span class="co">#&gt; 4               2026                     4 2026-01-25 2026-01-31 2026-W04</span></span>
+<span id="cb9-19"><a href="#cb9-19" tabindex="-1"></a><span class="co">#&gt; 5               2026                     5 2026-02-01 2026-02-07 2026-W05</span></span>
+<span id="cb9-20"><a href="#cb9-20" tabindex="-1"></a><span class="co">#&gt; 6               2026                     6 2026-02-08 2026-02-14 2026-W06</span></span>
+<span id="cb9-21"><a href="#cb9-21" tabindex="-1"></a></span>
+<span id="cb9-22"><a href="#cb9-22" tabindex="-1"></a><span class="fu">media_movel</span>(</span>
+<span id="cb9-23"><a href="#cb9-23" tabindex="-1"></a>  <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">5</span>, <span class="dv">3</span>, <span class="dv">8</span>, <span class="dv">7</span>, <span class="dv">6</span>, <span class="dv">9</span>),</span>
+<span id="cb9-24"><a href="#cb9-24" tabindex="-1"></a>  <span class="at">janela =</span> <span class="dv">3</span>,</span>
+<span id="cb9-25"><a href="#cb9-25" tabindex="-1"></a>  <span class="at">parcial =</span> <span class="cn">TRUE</span></span>
+<span id="cb9-26"><a href="#cb9-26" tabindex="-1"></a>)</span>
+<span id="cb9-27"><a href="#cb9-27" tabindex="-1"></a><span class="co">#&gt; [1] 2.000000 3.500000 3.333333 5.333333 6.000000 7.000000 7.333333</span></span>
+<span id="cb9-28"><a href="#cb9-28" tabindex="-1"></a><span class="co">#&gt; attr(,&quot;janela&quot;)</span></span>
+<span id="cb9-29"><a href="#cb9-29" tabindex="-1"></a><span class="co">#&gt; [1] 3</span></span>
+<span id="cb9-30"><a href="#cb9-30" tabindex="-1"></a><span class="co">#&gt; attr(,&quot;alinhamento&quot;)</span></span>
+<span id="cb9-31"><a href="#cb9-31" tabindex="-1"></a><span class="co">#&gt; [1] &quot;direita&quot;</span></span></code></pre></div>
+</div>
+<div id="direct-age-standardization" class="section level2">
+<h2>Direct age standardization</h2>
+<p>The package supplies WHO 2000–2025, Segi and Scandinavian standard
+populations:</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">populacao_padrao</span>(<span class="st">&quot;oms&quot;</span>))</span>
+<span id="cb10-2"><a href="#cb10-2" tabindex="-1"></a><span class="co">#&gt;        0-4        5-9      10-14      15-19      20-24      25-29 </span></span>
+<span id="cb10-3"><a href="#cb10-3" tabindex="-1"></a><span class="co">#&gt; 0.08856900 0.08686960 0.08596991 0.08467037 0.08217124 0.07927225</span></span></code></pre></div>
+<p>Pass age-specific counts and populations to
+<code>padronizar_idade()</code>:</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" tabindex="-1"></a>standardized <span class="ot">&lt;-</span> <span class="fu">padronizar_idade</span>(</span>
+<span id="cb11-2"><a href="#cb11-2" tabindex="-1"></a>  <span class="at">eventos =</span> deaths_by_age<span class="sc">$</span>obitos,</span>
+<span id="cb11-3"><a href="#cb11-3" tabindex="-1"></a>  <span class="at">populacao =</span> deaths_by_age<span class="sc">$</span>habitantes,</span>
+<span id="cb11-4"><a href="#cb11-4" tabindex="-1"></a>  <span class="at">idade =</span> deaths_by_age<span class="sc">$</span>faixa_etaria,</span>
+<span id="cb11-5"><a href="#cb11-5" tabindex="-1"></a>  <span class="at">populacao_padrao =</span> <span class="fu">populacao_padrao</span>(<span class="st">&quot;oms&quot;</span>),</span>
+<span id="cb11-6"><a href="#cb11-6" tabindex="-1"></a>  <span class="at">grupo =</span> deaths_by_age<span class="sc">$</span>ano,</span>
+<span id="cb11-7"><a href="#cb11-7" tabindex="-1"></a>  <span class="at">confianca =</span> <span class="fl">0.95</span></span>
+<span id="cb11-8"><a href="#cb11-8" tabindex="-1"></a>)</span></code></pre></div>
+</div>
+
+
+
+<!-- code folding -->
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
