@@ -12,7 +12,7 @@
 
 <meta name="author" content="Renato Prado Siqueira" />
 
-<meta name="date" content="2026-08-24" />
+<meta name="date" content="2026-10-06" />
 
 <title>Geography and epidemiological analysis</title>
 
@@ -341,7 +341,7 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 
 <h1 class="title toc-ignore">Geography and epidemiological analysis</h1>
 <h4 class="author">Renato Prado Siqueira</h4>
-<h4 class="date">2026-08-24</h4>
+<h4 class="date">2026-10-06</h4>
 
 
 
@@ -365,48 +365,41 @@ level:</p>
 <span id="cb1-7"><a href="#cb1-7" tabindex="-1"></a><span class="co">#&gt; 5             5           CO Centro-Oeste   4        468</span></span>
 <span id="cb1-8"><a href="#cb1-8" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">datasus_territorios</span>(<span class="st">&quot;uf&quot;</span>))</span>
 <span id="cb1-9"><a href="#cb1-9" tabindex="-1"></a><span class="co">#&gt;   codigo_uf uf unidade_federacao codigo_regiao sigla_regiao regiao municipios</span></span>
-<span id="cb1-10"><a href="#cb1-10" tabindex="-1"></a><span class="co">#&gt; 1        11 RO   Rond&lt;U+00F4&gt;nia             1            N  Norte         52</span></span>
+<span id="cb1-10"><a href="#cb1-10" tabindex="-1"></a><span class="co">#&gt; 1        11 RO          Rondônia             1            N  Norte         52</span></span>
 <span id="cb1-11"><a href="#cb1-11" tabindex="-1"></a><span class="co">#&gt; 2        12 AC              Acre             1            N  Norte         22</span></span>
 <span id="cb1-12"><a href="#cb1-12" tabindex="-1"></a><span class="co">#&gt; 3        13 AM          Amazonas             1            N  Norte         62</span></span>
 <span id="cb1-13"><a href="#cb1-13" tabindex="-1"></a><span class="co">#&gt; 4        14 RR           Roraima             1            N  Norte         15</span></span>
-<span id="cb1-14"><a href="#cb1-14" tabindex="-1"></a><span class="co">#&gt; 5        15 PA       Par&lt;U+00E1&gt;             1            N  Norte        144</span></span>
-<span id="cb1-15"><a href="#cb1-15" tabindex="-1"></a><span class="co">#&gt; 6        16 AP      Amap&lt;U+00E1&gt;             1            N  Norte         16</span></span>
+<span id="cb1-14"><a href="#cb1-14" tabindex="-1"></a><span class="co">#&gt; 5        15 PA              Pará             1            N  Norte        144</span></span>
+<span id="cb1-15"><a href="#cb1-15" tabindex="-1"></a><span class="co">#&gt; 6        16 AP             Amapá             1            N  Norte         16</span></span>
 <span id="cb1-16"><a href="#cb1-16" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">datasus_territorios</span>(<span class="st">&quot;municipio&quot;</span>, <span class="at">uf =</span> <span class="st">&quot;MS&quot;</span>))</span>
-<span id="cb1-17"><a href="#cb1-17" tabindex="-1"></a><span class="co">#&gt;   codigo_municipio           municipio codigo_uf uf  unidade_federacao</span></span>
-<span id="cb1-18"><a href="#cb1-18" tabindex="-1"></a><span class="co">#&gt; 1          5000203   &lt;U+00C1&gt;gua Clara        50 MS Mato Grosso do Sul</span></span>
-<span id="cb1-19"><a href="#cb1-19" tabindex="-1"></a><span class="co">#&gt; 2          5000252  Alcin&lt;U+00F3&gt;polis        50 MS Mato Grosso do Sul</span></span>
-<span id="cb1-20"><a href="#cb1-20" tabindex="-1"></a><span class="co">#&gt; 3          5000609             Amambai        50 MS Mato Grosso do Sul</span></span>
-<span id="cb1-21"><a href="#cb1-21" tabindex="-1"></a><span class="co">#&gt; 4          5000708    Anast&lt;U+00E1&gt;cio        50 MS Mato Grosso do Sul</span></span>
-<span id="cb1-22"><a href="#cb1-22" tabindex="-1"></a><span class="co">#&gt; 5          5000807 Anauril&lt;U+00E2&gt;ndia        50 MS Mato Grosso do Sul</span></span>
-<span id="cb1-23"><a href="#cb1-23" tabindex="-1"></a><span class="co">#&gt; 6          5000856     Ang&lt;U+00E9&gt;lica        50 MS Mato Grosso do Sul</span></span>
-<span id="cb1-24"><a href="#cb1-24" tabindex="-1"></a><span class="co">#&gt;   codigo_regiao sigla_regiao       regiao codigo_regiao_imediata</span></span>
-<span id="cb1-25"><a href="#cb1-25" tabindex="-1"></a><span class="co">#&gt; 1             5           CO Centro-Oeste                 500002</span></span>
-<span id="cb1-26"><a href="#cb1-26" tabindex="-1"></a><span class="co">#&gt; 2             5           CO Centro-Oeste                 500004</span></span>
-<span id="cb1-27"><a href="#cb1-27" tabindex="-1"></a><span class="co">#&gt; 3             5           CO Centro-Oeste                 500009</span></span>
-<span id="cb1-28"><a href="#cb1-28" tabindex="-1"></a><span class="co">#&gt; 4             5           CO Centro-Oeste                 500012</span></span>
-<span id="cb1-29"><a href="#cb1-29" tabindex="-1"></a><span class="co">#&gt; 5             5           CO Centro-Oeste                 500007</span></span>
-<span id="cb1-30"><a href="#cb1-30" tabindex="-1"></a><span class="co">#&gt; 6             5           CO Centro-Oeste                 500007</span></span>
-<span id="cb1-31"><a href="#cb1-31" tabindex="-1"></a><span class="co">#&gt;                 regiao_imediata codigo_regiao_intermediaria</span></span>
-<span id="cb1-32"><a href="#cb1-32" tabindex="-1"></a><span class="co">#&gt; 1            Tr&lt;U+00EA&gt;s Lagoas                        5001</span></span>
-<span id="cb1-33"><a href="#cb1-33" tabindex="-1"></a><span class="co">#&gt; 2                         Coxim                        5001</span></span>
-<span id="cb1-34"><a href="#cb1-34" tabindex="-1"></a><span class="co">#&gt; 3                       Amambai                        5002</span></span>
-<span id="cb1-35"><a href="#cb1-35" tabindex="-1"></a><span class="co">#&gt; 4 Aquidauana - Anast&lt;U+00E1&gt;cio                        5003</span></span>
-<span id="cb1-36"><a href="#cb1-36" tabindex="-1"></a><span class="co">#&gt; 5                Nova Andradina                        5002</span></span>
-<span id="cb1-37"><a href="#cb1-37" tabindex="-1"></a><span class="co">#&gt; 6                Nova Andradina                        5002</span></span>
-<span id="cb1-38"><a href="#cb1-38" tabindex="-1"></a><span class="co">#&gt;   regiao_intermediaria codigo_microrregiao       microrregiao</span></span>
-<span id="cb1-39"><a href="#cb1-39" tabindex="-1"></a><span class="co">#&gt; 1         Campo Grande               50007 Tr&lt;U+00EA&gt;s Lagoas</span></span>
-<span id="cb1-40"><a href="#cb1-40" tabindex="-1"></a><span class="co">#&gt; 2         Campo Grande               50003       Alto Taquari</span></span>
-<span id="cb1-41"><a href="#cb1-41" tabindex="-1"></a><span class="co">#&gt; 3             Dourados               50010           Dourados</span></span>
-<span id="cb1-42"><a href="#cb1-42" tabindex="-1"></a><span class="co">#&gt; 4       Corumb&lt;U+00E1&gt;               50002         Aquidauana</span></span>
-<span id="cb1-43"><a href="#cb1-43" tabindex="-1"></a><span class="co">#&gt; 5             Dourados               50008     Nova Andradina</span></span>
-<span id="cb1-44"><a href="#cb1-44" tabindex="-1"></a><span class="co">#&gt; 6             Dourados               50011           Iguatemi</span></span>
-<span id="cb1-45"><a href="#cb1-45" tabindex="-1"></a><span class="co">#&gt;   codigo_mesorregiao                        mesorregiao</span></span>
-<span id="cb1-46"><a href="#cb1-46" tabindex="-1"></a><span class="co">#&gt; 1               5003        Leste de Mato Grosso do Sul</span></span>
-<span id="cb1-47"><a href="#cb1-47" tabindex="-1"></a><span class="co">#&gt; 2               5002 Centro Norte de Mato Grosso do Sul</span></span>
-<span id="cb1-48"><a href="#cb1-48" tabindex="-1"></a><span class="co">#&gt; 3               5004     Sudoeste de Mato Grosso do Sul</span></span>
-<span id="cb1-49"><a href="#cb1-49" tabindex="-1"></a><span class="co">#&gt; 4               5001       Pantanais Sul Mato-grossense</span></span>
-<span id="cb1-50"><a href="#cb1-50" tabindex="-1"></a><span class="co">#&gt; 5               5003        Leste de Mato Grosso do Sul</span></span>
-<span id="cb1-51"><a href="#cb1-51" tabindex="-1"></a><span class="co">#&gt; 6               5004     Sudoeste de Mato Grosso do Sul</span></span></code></pre></div>
+<span id="cb1-17"><a href="#cb1-17" tabindex="-1"></a><span class="co">#&gt;   codigo_municipio    municipio codigo_uf uf  unidade_federacao codigo_regiao</span></span>
+<span id="cb1-18"><a href="#cb1-18" tabindex="-1"></a><span class="co">#&gt; 1          5000203   Água Clara        50 MS Mato Grosso do Sul             5</span></span>
+<span id="cb1-19"><a href="#cb1-19" tabindex="-1"></a><span class="co">#&gt; 2          5000252  Alcinópolis        50 MS Mato Grosso do Sul             5</span></span>
+<span id="cb1-20"><a href="#cb1-20" tabindex="-1"></a><span class="co">#&gt; 3          5000609      Amambai        50 MS Mato Grosso do Sul             5</span></span>
+<span id="cb1-21"><a href="#cb1-21" tabindex="-1"></a><span class="co">#&gt; 4          5000708    Anastácio        50 MS Mato Grosso do Sul             5</span></span>
+<span id="cb1-22"><a href="#cb1-22" tabindex="-1"></a><span class="co">#&gt; 5          5000807 Anaurilândia        50 MS Mato Grosso do Sul             5</span></span>
+<span id="cb1-23"><a href="#cb1-23" tabindex="-1"></a><span class="co">#&gt; 6          5000856     Angélica        50 MS Mato Grosso do Sul             5</span></span>
+<span id="cb1-24"><a href="#cb1-24" tabindex="-1"></a><span class="co">#&gt;   sigla_regiao       regiao codigo_regiao_imediata        regiao_imediata</span></span>
+<span id="cb1-25"><a href="#cb1-25" tabindex="-1"></a><span class="co">#&gt; 1           CO Centro-Oeste                 500002            Três Lagoas</span></span>
+<span id="cb1-26"><a href="#cb1-26" tabindex="-1"></a><span class="co">#&gt; 2           CO Centro-Oeste                 500004                  Coxim</span></span>
+<span id="cb1-27"><a href="#cb1-27" tabindex="-1"></a><span class="co">#&gt; 3           CO Centro-Oeste                 500009                Amambai</span></span>
+<span id="cb1-28"><a href="#cb1-28" tabindex="-1"></a><span class="co">#&gt; 4           CO Centro-Oeste                 500012 Aquidauana - Anastácio</span></span>
+<span id="cb1-29"><a href="#cb1-29" tabindex="-1"></a><span class="co">#&gt; 5           CO Centro-Oeste                 500007         Nova Andradina</span></span>
+<span id="cb1-30"><a href="#cb1-30" tabindex="-1"></a><span class="co">#&gt; 6           CO Centro-Oeste                 500007         Nova Andradina</span></span>
+<span id="cb1-31"><a href="#cb1-31" tabindex="-1"></a><span class="co">#&gt;   codigo_regiao_intermediaria regiao_intermediaria codigo_microrregiao</span></span>
+<span id="cb1-32"><a href="#cb1-32" tabindex="-1"></a><span class="co">#&gt; 1                        5001         Campo Grande               50007</span></span>
+<span id="cb1-33"><a href="#cb1-33" tabindex="-1"></a><span class="co">#&gt; 2                        5001         Campo Grande               50003</span></span>
+<span id="cb1-34"><a href="#cb1-34" tabindex="-1"></a><span class="co">#&gt; 3                        5002             Dourados               50010</span></span>
+<span id="cb1-35"><a href="#cb1-35" tabindex="-1"></a><span class="co">#&gt; 4                        5003              Corumbá               50002</span></span>
+<span id="cb1-36"><a href="#cb1-36" tabindex="-1"></a><span class="co">#&gt; 5                        5002             Dourados               50008</span></span>
+<span id="cb1-37"><a href="#cb1-37" tabindex="-1"></a><span class="co">#&gt; 6                        5002             Dourados               50011</span></span>
+<span id="cb1-38"><a href="#cb1-38" tabindex="-1"></a><span class="co">#&gt;     microrregiao codigo_mesorregiao                        mesorregiao</span></span>
+<span id="cb1-39"><a href="#cb1-39" tabindex="-1"></a><span class="co">#&gt; 1    Três Lagoas               5003        Leste de Mato Grosso do Sul</span></span>
+<span id="cb1-40"><a href="#cb1-40" tabindex="-1"></a><span class="co">#&gt; 2   Alto Taquari               5002 Centro Norte de Mato Grosso do Sul</span></span>
+<span id="cb1-41"><a href="#cb1-41" tabindex="-1"></a><span class="co">#&gt; 3       Dourados               5004     Sudoeste de Mato Grosso do Sul</span></span>
+<span id="cb1-42"><a href="#cb1-42" tabindex="-1"></a><span class="co">#&gt; 4     Aquidauana               5001       Pantanais Sul Mato-grossense</span></span>
+<span id="cb1-43"><a href="#cb1-43" tabindex="-1"></a><span class="co">#&gt; 5 Nova Andradina               5003        Leste de Mato Grosso do Sul</span></span>
+<span id="cb1-44"><a href="#cb1-44" tabindex="-1"></a><span class="co">#&gt; 6       Iguatemi               5004     Sudoeste de Mato Grosso do Sul</span></span></code></pre></div>
 <p>DATASUS commonly uses six-digit municipality codes, while IBGE
 publishes a seven-digit identifier. Normalize either form
 explicitly:</p>

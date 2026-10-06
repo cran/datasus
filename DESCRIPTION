@@ -1,7 +1,7 @@
 Package: datasus
 Type: Package
 Title: An Interface to Brazilian Public Health Data
-Version: 0.16.1
+Version: 0.16.2
 Authors@R: person("Renato", "Prado Siqueira", email = "rpradosiqueira@gmail.com", role = c("aut", "cre"))
 Description: Retrieves public health data from the Department of Informatics
     ('DATASUS') of the Brazilian Unified Health System ('Sistema Unico de
@@ -37,8 +37,8 @@ VignetteBuilder: knitr
 Config/testthat/edition: 3
 RoxygenNote: 8.0.0
 NeedsCompilation: no
-Packaged: 2026-08-24 11:54:01 UTC; renat
+Packaged: 2026-10-06 14:55:36 UTC; renat
 Author: Renato Prado Siqueira [aut, cre]
 Maintainer: Renato Prado Siqueira <rpradosiqueira@gmail.com>
 Repository: CRAN
-Date/Publication: 2026-09-05 13:10:02 UTC
+Date/Publication: 2026-10-06 19:30:13 UTC

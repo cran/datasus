@@ -16,8 +16,14 @@ and current SISCAN exam tables are also available.
 
 ## Installation
 
-The package is currently under active redevelopment and is not available
-from CRAN. Install the development version from GitHub:
+Install the stable version from CRAN:
+
+``` r
+install.packages("datasus")
+```
+
+Install the development version from GitHub for changes not yet
+published on CRAN:
 
 ``` r
 install.packages("remotes")
@@ -75,6 +81,17 @@ sinasc(uf = "SP", periodo = 2024)
 The historical functions such as `sim_obt10_mun()` and `sinasc_nv_uf()`
 remain as deprecated compatibility wrappers. New code should use `sim()`
 and `sinasc()`.
+
+TABNET filters accept full option labels, internal form values, or an
+unambiguous numeric code at the start of an option label. For example,
+`filtros = list(municipio = "500270")` selects the option labelled
+`"500270 CAMPO GRANDE"`; the client sends its internal value, not the
+IBGE code, to TABNET. The legacy `municipio = 500270` shortcut remains
+supported. Prefer character codes to preserve leading zeroes, and use
+the code shown by `datasus_opcoes()` rather than assuming six- and
+seven-digit codes are interchangeable. Exact labels and internal values
+take priority; ambiguous prefixes require a full label or internal
+value.
 
 The health-services API uses the same arguments for SIH, SIA and CNES:
 

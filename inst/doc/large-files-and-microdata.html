@@ -12,7 +12,7 @@
 
 <meta name="author" content="Renato Prado Siqueira" />
 
-<meta name="date" content="2026-08-24" />
+<meta name="date" content="2026-10-06" />
 
 <title>Large files, raw microdata and provenance</title>
 
@@ -342,7 +342,7 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 <h1 class="title toc-ignore">Large files, raw microdata and
 provenance</h1>
 <h4 class="author">Renato Prado Siqueira</h4>
-<h4 class="date">2026-08-24</h4>
+<h4 class="date">2026-10-06</h4>
 
 
 
@@ -412,16 +412,16 @@ interface as DBF files.</p>
 <span id="cb3-9"><a href="#cb3-9" tabindex="-1"></a><span class="co">#&gt; 7     sih   RD    val_tot                 valor_total</span></span>
 <span id="cb3-10"><a href="#cb3-10" tabindex="-1"></a><span class="co">#&gt; 8     sih   RD       sexo                        sexo</span></span>
 <span id="cb3-11"><a href="#cb3-11" tabindex="-1"></a><span class="co">#&gt; 9     sih   RD      idade                  idade_anos</span></span>
-<span id="cb3-12"><a href="#cb3-12" tabindex="-1"></a><span class="co">#&gt;                               descricao    classe formato</span></span>
-<span id="cb3-13"><a href="#cb3-13" tabindex="-1"></a><span class="co">#&gt; 1                  N&lt;U+00FA&gt;mero da AIH character        </span></span>
-<span id="cb3-14"><a href="#cb3-14" tabindex="-1"></a><span class="co">#&gt; 2                    C&lt;U+00F3&gt;digo CNES character        </span></span>
-<span id="cb3-15"><a href="#cb3-15" tabindex="-1"></a><span class="co">#&gt; 3 Munic&lt;U+00ED&gt;pio de resid&lt;U+00EA&gt;ncia character        </span></span>
-<span id="cb3-16"><a href="#cb3-16" tabindex="-1"></a><span class="co">#&gt; 4      Data de interna&lt;U+00E7&gt;&lt;U+00E3&gt;o      date  %Y%m%d</span></span>
-<span id="cb3-17"><a href="#cb3-17" tabindex="-1"></a><span class="co">#&gt; 5                  Data de sa&lt;U+00ED&gt;da      date  %Y%m%d</span></span>
-<span id="cb3-18"><a href="#cb3-18" tabindex="-1"></a><span class="co">#&gt; 6   Diagn&lt;U+00F3&gt;stico principal CID-10 character        </span></span>
-<span id="cb3-19"><a href="#cb3-19" tabindex="-1"></a><span class="co">#&gt; 7                  Valor total aprovado   numeric        </span></span>
-<span id="cb3-20"><a href="#cb3-20" tabindex="-1"></a><span class="co">#&gt; 8                                  Sexo character        </span></span>
-<span id="cb3-21"><a href="#cb3-21" tabindex="-1"></a><span class="co">#&gt; 9                         Idade em anos   numeric</span></span></code></pre></div>
+<span id="cb3-12"><a href="#cb3-12" tabindex="-1"></a><span class="co">#&gt;                      descricao    classe formato</span></span>
+<span id="cb3-13"><a href="#cb3-13" tabindex="-1"></a><span class="co">#&gt; 1                Número da AIH character        </span></span>
+<span id="cb3-14"><a href="#cb3-14" tabindex="-1"></a><span class="co">#&gt; 2                  Código CNES character        </span></span>
+<span id="cb3-15"><a href="#cb3-15" tabindex="-1"></a><span class="co">#&gt; 3      Município de residência character        </span></span>
+<span id="cb3-16"><a href="#cb3-16" tabindex="-1"></a><span class="co">#&gt; 4           Data de internação      date  %Y%m%d</span></span>
+<span id="cb3-17"><a href="#cb3-17" tabindex="-1"></a><span class="co">#&gt; 5                Data de saída      date  %Y%m%d</span></span>
+<span id="cb3-18"><a href="#cb3-18" tabindex="-1"></a><span class="co">#&gt; 6 Diagnóstico principal CID-10 character        </span></span>
+<span id="cb3-19"><a href="#cb3-19" tabindex="-1"></a><span class="co">#&gt; 7         Valor total aprovado   numeric        </span></span>
+<span id="cb3-20"><a href="#cb3-20" tabindex="-1"></a><span class="co">#&gt; 8                         Sexo character        </span></span>
+<span id="cb3-21"><a href="#cb3-21" tabindex="-1"></a><span class="co">#&gt; 9                Idade em anos   numeric</span></span></code></pre></div>
 <p>After a read, validate the critical analysis fields:</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a><span class="fu">datasus_validar_esquema</span>(</span>
 <span id="cb4-2"><a href="#cb4-2" tabindex="-1"></a>  admissions,</span>
